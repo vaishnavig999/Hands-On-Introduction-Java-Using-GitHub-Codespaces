@@ -1,35 +1,21 @@
-# Hands-On Introduction: Java 
-This is the repository for the LinkedIn Learning course Hands-On Introduction: Java. The full course is available from [LinkedIn Learning][lil-course-url].
+<div style="font-family: Arial, sans-serif; font-size: 16px;">
 
-![1666989653554](https://user-images.githubusercontent.com/25848438/202252164-1ad893de-11f0-47a3-8a73-689f3b0a1c60.jpg)
+# <span style="font-size: 24px; font-weight: bold;">Basic Banking System</span>
 
+## Description
 
-Java is one of the most popular open-source programming languages that’s currently available on the market. It’s used widely in different industries all over the world, where it’s become something of a must-have for developers. Are you ready to get your skills up to speed? Or are you at risk of falling behind? Join instructor Angie Jones for a hands-on introduction to basic coding in Java. Learn how to develop an online banking system with Java by testing out your new skills in the examples and exercises. Find out what it takes to build up your confidence to interact with object models, decision structures, and external databases. Angie guides you through the best practices for designing and implementing a fully formed piece of software that you can add to your portfolio. Why wait to push your Java skills to the next level when you can keep learning on your own today?<br><br>The best way to learn a language is to use it in practice. That’s why this course is integrated with GitHub Codespaces, an instant cloud developer environment that offers all the functionality of your favorite IDE without the need for any local machine setup. With GitHub Codespaces, you can get hands-on practice from any machine, at any time—all while using a tool that you’ll likely encounter in the workplace. Check out the [Using GitHub Codespaces with this course][gcs-video-url] video to learn how to get started.
+For this project, our task is to build a basic banking system that allows customers to view their balance, make deposits, and withdraw funds from their accounts. Before writing any code, let's examine our challenge, design a solution, and identify our assumptions.
 
+We have a database with two tables: customers and accounts. These both represent objects within our application that we'll need to interact with, so we can develop Java classes that represent both of these. We'll also need to account for the actions or behaviors of our system, so we'll need methods to check the balance of an account, deposit, and withdraw. These are behaviors a customer makes on an account so we'll need a link between these two objects.
 
-## Instructions
-This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
+If we look at our database, the Customers table has a field called ACCOUNT_ID, and the Accounts table has a field called ID. These two IDs tie the customer to their account, so we can certainly keep that in mind when implementing our application. In fact, for security purposes, we should authenticate the customer before we allow any actions to be taken on an account. The database hosts fields for username and password, so we can create an authenticator class that will verify the customer's credentials.
 
-## Branches
-The branches are structured to correspond to the videos in the course. The naming convention is `CHAPTER#_MOVIE#`. As an example, the branch named `02_03` corresponds to the second chapter and the third video in that chapter. 
-Some branches will have a beginning and an end state. These are marked with the letters `b` for "beginning" and `e` for "end". The `b` branch contains the code as it is at the beginning of the movie. The `e` branch contains the code as it is at the end of the movie. The `main` branch holds the final state of the code when in the course.
+All of this implementation occurs on the backend, so we'll also need to provide an interface that allows the user to enter input and let us know what actions they'd like to make. We'll keep it simple and build a menu class that provides a text-based user interface capable of input and output. And finally, because we'll need to read and write from our database, it's best to consolidate the code that does this within one class, so we'll make a data store class as well.
 
-When switching from one exercise files branch to the next after making changes to the files, you may get a message like this:
+## Assumptions
 
-    error: Your local changes to the following files would be overwritten by checkout:        [files]
-    Please commit your changes or stash them before you switch branches.
-    Aborting
+- A customer only has one account.
+- An account only has one customer.
+- All accounts are checking accounts.
 
-To resolve this issue:
-	
-    Add changes to git using this command: git add .
-	Commit changes using this command: git commit -m "some message"
-
-### Instructor
-
-Angie Jones
-
-Check out my other courses on [LinkedIn Learning](https://www.linkedin.com/learning/instructors/angie-jones).
-
-[lil-course-url]: https://www.linkedin.com/learning/hands-on-introduction-java
-[gcs-video-url]: https://www.linkedin.com/learning/hands-on-introduction-java/using-github-codespaces-with-this-course
+</div>
